@@ -1,0 +1,27 @@
+{
+  "plugins": ["import", "react"],
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-const-assign": "warn",
+    "no-this-before-super": "warn",
+    "no-undef": "warn",
+    "no-unreachable": "warn",
+    "no-extra-semi": "error",
+    "constructor-super": "warn",
+    "valid-typeof": "warn",
+    "react/no-unused-state": "off",
+    "react/prop-types": "off"
+  }
+}

@@ -1,0 +1,39 @@
+body {
+  background-color: $light-bg;
+  line-height: 1.5;
+  font-family: $base-font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font;
+  color: $heading-color;
+  margin: 0 0 15px;
+}
+
+p {
+  color: $text-color;
+  margin: 0 0 20px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+
+  .heading {
+    margin: 0;
+  }
+
+  .light-text {
+    color: rgba($color: #000000, $alpha: 0.64);
+    text-align: center;
+  }
+}

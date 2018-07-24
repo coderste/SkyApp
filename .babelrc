@@ -1,0 +1,4 @@
+{
+    presets: ['react', 'airbnb'],
+    plugins: ['react-hot-loader/babel', 'transform-class-properties'],
+}
