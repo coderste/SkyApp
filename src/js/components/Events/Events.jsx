@@ -1,38 +1,82 @@
 import React from 'react';
+import Event from './Event';
 
 class Events extends React.Component {
   state = {
     events: [],
+    markets: [],
+    outcomes: [],
   };
 
   componentDidMount() {
     const { url } = this.props;
-    this.storeEvents(url);
+    this.fetchData(url);
   }
 
   componentWillReceiveProps(nextProps) {
     const { url } = this.props;
-    if (url !== nextProps.url) this.storeEvents(url);
+    if (url !== nextProps.url) this.fetchData(url);
   }
 
-  storeEvents = (url) => {
+  fetchData = (url) => {
     fetch(url)
       .then(response => response.json())
-      .then((results) => {
-        this.setState({ events: results.events });
-      });
+      .then(data => this.storeData(data));
+  };
+
+  storeData = (data) => {
+    const events = data.events.map((event) => {
+      const {
+        eventId,
+        name,
+        className,
+        typeId,
+        typeName,
+        linkedEventTypeId,
+        linkedEventTypeName,
+        startTime,
+        scores,
+        competitors,
+        status,
+      } = event;
+
+      return {
+        eventId,
+        name,
+        className,
+        typeId,
+        typeName,
+        linkedEventTypeId,
+        linkedEventTypeName,
+        startTime,
+        scores,
+        competitors,
+        status,
+      };
+    });
+
+    const { markets, outcomes } = data;
+
+    this.setState({ events, markets, outcomes });
   };
 
   render() {
-    const { events } = this.state;
+    const { events, markets } = this.state;
+
     return (
-      <ul className="list">
-        {events.map(event => (
-          <li key={event.eventId}>
-            {event.name}
-          </li>
-        ))}
-      </ul>
+      <section className="live-events">
+        <div className="live-events__header">
+          <h3 className="title">
+Football
+          </h3>
+        </div>
+        <div className="live-events__list">
+          {events.map((event) => {
+            const id = event.eventId;
+            return <Event key={id} event={event} />;
+          })}
+        </div>
+      </section>
     );
   }
 }

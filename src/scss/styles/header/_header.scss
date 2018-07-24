@@ -1,0 +1,14 @@
+.site-header {
+  background-color: $header-bg;
+  padding: 15px 0;
+
+  &__content {
+    display: flex;
+    justify-content: center;
+
+    .image {
+      height: 30px;
+      width: auto;
+    }
+  }
+}

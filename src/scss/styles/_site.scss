@@ -20,20 +20,19 @@ p {
   margin: 0 0 20px;
 }
 
-.center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
+.container {
+  max-width: calc(1440px + 10%);
+  padding: 0 5%;
+}
 
-  .heading {
-    margin: 0;
+.site-wrap {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
-  .light-text {
-    color: rgba($color: #000000, $alpha: 0.64);
-    text-align: center;
+  &__content {
+    @extend .col-lg-8;
   }
 }
