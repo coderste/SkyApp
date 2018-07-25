@@ -2,13 +2,36 @@
   background-color: $header-bg;
   padding: 15px 0;
 
-  &__content {
+  &__row {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__logo {
+    @extend .col-md-6;
+    @extend .offset-md-3;
     display: flex;
     justify-content: center;
 
     .image {
       height: 30px;
       width: auto;
+    }
+  }
+
+  &__controls {
+    @extend .col-md-3;
+    display: flex;
+    justify-content: flex-end;
+
+    .odds-toggle {
+      cursor: pointer;
+      border: 0;
+      background-color: transparent;
+      color: $white;
+      padding: 0;
+      font-size: 0.9rem;
+      text-transform: capitalize;
     }
   }
 }

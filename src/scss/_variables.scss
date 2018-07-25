@@ -11,3 +11,10 @@ $heading-font: 'Titillium Web', sans-serif;
 // Colors
 $header-bg: #153f8e;
 $sidebar-bg: #020231;
+$live-bg: #15973d;
+
+// Event Market
+$market-bg: linear-gradient(to bottom, #ffffff, #ebeff5);
+$market-hover-bg: linear-gradient(to bottom, darken(#ffffff, 5), darken(#ebeff5, 5));
+$market-border-color: #e4ebf3;
+$odds-color: #d92231;

@@ -1,0 +1,13 @@
+.live-events {
+  &__header {
+    margin-top: 25px;
+    margin-bottom: 10px;
+
+    .title {
+      margin: 0;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.15px;
+    }
+  }
+}

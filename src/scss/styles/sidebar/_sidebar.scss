@@ -1,7 +1,6 @@
 .sidebar {
   @extend .col-lg-2;
   background-color: $sidebar-bg;
-  height: calc(100vh - 60px);
 
   &__container {
     height: 100%;
