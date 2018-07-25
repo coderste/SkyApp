@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Events from '../components/Events/Events';
 import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
+import EventDetails from '../components/EventDetails/EventDetails';
 
 class App extends React.Component {
   state = {
@@ -42,6 +43,10 @@ class App extends React.Component {
                   exact
                   path="/"
                   render={props => <Events oddsDisplay={odds} url={url} {...props} />}
+                />
+                <Route
+                  path="/football/live/:eventId"
+                  render={props => <EventDetails oddsDisplay={odds} url={url} {...props} />}
                 />
               </Switch>
             </div>

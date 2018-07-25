@@ -78,6 +78,10 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@fortawesome/fontawesome-pro@^5.2.0":
+  version "5.2.0"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/fontawesome-pro-5.2.0.tgz#e202f9ac8ee8543670233c218dfc6e058a7a89c5"
+
 "@webassemblyjs/ast@1.5.13":
   version "1.5.13"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.5.13.tgz#81155a570bd5803a30ec31436bc2c9c0ede38f25"
