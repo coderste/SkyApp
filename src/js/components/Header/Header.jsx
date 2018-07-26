@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -43,10 +46,10 @@ class Header extends React.Component {
     const { odds } = this.props;
 
     let oddsText;
-    if (odds === 'fraction') {
-      oddsText = 'decimal';
-    } else {
+    if (odds !== 'fraction') {
       oddsText = 'fraction';
+    } else {
+      oddsText = 'decimal';
     }
 
     return (
@@ -54,11 +57,13 @@ class Header extends React.Component {
         <div className="container">
           <div className="site-header__row row">
             <div className="site-header__logo">
-              <img
-                className="image"
-                src="/assets/images/skybet-mobile-logo.png"
-                alt="Sky Bet Logo"
-              />
+              <Link to="/">
+                <img
+                  className="image"
+                  src="/assets/images/skybet-mobile-logo.png"
+                  alt="Sky Bet Logo"
+                />
+              </Link>
             </div>
             <div className="site-header__controls">
               <button type="button" className="odds-toggle" onClick={eve => this.openSettings(eve)}>

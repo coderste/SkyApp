@@ -1,0 +1,42 @@
+.event-details {
+  margin: 0 -15px;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: $event-details-header;
+    padding: 15px 0;
+  }
+
+  &__teams {
+    .title {
+      color: $white;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .vs {
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
+
+  &__type {
+    .type {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: rgba($color: $white, $alpha: 0.9);
+    }
+  }
+
+  &__time {
+    .start-time {
+      font-size: 0.8rem;
+      color: rgba($color: $white, $alpha: 0.7);
+    }
+  }
+}
