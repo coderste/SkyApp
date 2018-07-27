@@ -11,10 +11,24 @@ $heading-font: 'Titillium Web', sans-serif;
 
 // Colors
 $header-bg: #153f8e;
+$scoreboard-header-bg: radial-gradient(
+  ellipse 90% 100px at 50% 60px,
+  #182b7c 0,
+  #0e1556 50%,
+  #07073d 70%
+);
 $sidebar-bg: #020231;
 $live-bg: #15973d;
 $details-header: #132c6c;
 $event-details-header: #0d2051;
+$score-bg: linear-gradient(
+  rgb(104, 48, 40) 0px,
+  rgb(154, 55, 49) 50%,
+  rgb(146, 32, 25) 50%,
+  rgb(195, 17, 11) 100%
+);
+$score-sep-bg: linear-gradient(rgb(104, 48, 40) 0px, rgb(146, 32, 25) 100%);
+$team-bg: linear-gradient(to bottom, #fff 0, #fcfcfc 50%, #f3f3f3 50%, #f3f3f3 100%);
 
 // Event Market
 $market-bg: linear-gradient(to bottom, #ffffff, #ebeff5);

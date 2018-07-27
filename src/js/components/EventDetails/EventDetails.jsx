@@ -1,6 +1,7 @@
 import React from 'react';
 
-import moment from 'moment';
+import EventHeader from './EventInfo/EventHeader';
+import EventMarket from './EventInfo/EventMarket';
 
 class EventDetails extends React.Component {
   constructor(props) {
@@ -85,44 +86,36 @@ class EventDetails extends React.Component {
   };
 
   render() {
-    const { eventItem, home, away } = this.state;
-    const startTime = moment(eventItem.startTime).format('dddd Do MMMM YYYY h:mm');
+    const {
+      eventItem, home, away, scores, market, outcomes,
+    } = this.state;
+
+    let homePrefix = home.name;
+    let awayPrefix = away.name;
+
+    if (
+      typeof homePrefix !== 'undefined'
+      && typeof awayPrefix !== 'undefined'
+      && homePrefix.substring(0, 3) !== awayPrefix.substring(0, 3)
+    ) {
+      homePrefix = homePrefix.substring(0, 3);
+      awayPrefix = awayPrefix.substring(0, 3);
+    } else if (typeof homePrefix !== 'undefined' && typeof awayPrefix !== 'undefined') {
+      homePrefix = homePrefix.substring(0, 8);
+      awayPrefix = awayPrefix.substring(0, 8);
+    }
 
     return (
       <div className="event-details">
-        <div className="event-details__header">
-          <div className="event-details__teams">
-            <span className="title home">
-              {home.name}
-            </span>
-            <span className="title vs">
-v
-            </span>
-            <span className="title away">
-              {away.name}
-            </span>
-          </div>
-          <div className="event-details__type">
-            <span className="type">
-              {eventItem.linkedEventTypeName}
-            </span>
-          </div>
-          <div className="event-details__time">
-            <span className="start-time">
-              {startTime}
-            </span>
-          </div>
-        </div>
-        <div className="event-details__score">
-          <div className="event-details__score-title" />
-          <div className="event-details__score-home event-details__scoreboard">
-            {/* {scores.home} */}
-          </div>
-          <div className="event-details__score-away event-details__scoreboard">
-            {/* {scores.away} */}
-          </div>
-          <div className="event-details__score-title" />
-        </div>
+        <EventHeader
+          home={home}
+          away={away}
+          homePrefix={homePrefix}
+          awayPrefix={awayPrefix}
+          eventItem={eventItem}
+          scores={scores}
+        />
+        <EventMarket eventItem={eventItem} market={market} outcomes={outcomes} />
       </div>
     );
   }

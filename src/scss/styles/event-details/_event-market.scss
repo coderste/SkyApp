@@ -1,0 +1,18 @@
+.event-details {
+  &__markets {
+    margin: 15px 15px 0;
+    background-color: $details-header;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+  }
+
+  &__market {
+    &-header {
+      padding: 10px 15px;
+
+      .market {
+        color: $white;
+      }
+    }
+  }
+}
