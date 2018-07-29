@@ -14,6 +14,7 @@ class App extends React.Component {
     odds: 'fraction',
   };
 
+  /* Toggle whether the odds are decimal or fraction based */
   toggleOdds = () => {
     const { odds } = this.state;
 

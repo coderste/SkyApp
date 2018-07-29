@@ -1,6 +1,7 @@
 import React from 'react';
 import Event from './Event';
 
+/* Store the event data and display them */
 class Events extends React.Component {
   state = {
     events: [],
@@ -10,22 +11,26 @@ class Events extends React.Component {
 
   componentDidMount() {
     const { url } = this.props;
+    // Fetch the data from the API
     this.fetchData(url);
   }
 
   componentWillReceiveProps(nextProps) {
     const { url } = this.props;
-    if (url !== nextProps.url) this.fetchData(url);
+    if (url !== nextProps.url) {
+      this.fetchData(url);
+    }
   }
 
   fetchData = (url) => {
     fetch(url)
       .then(response => response.json())
-      .then(data => this.storeData(data));
+      .then(data => this.storeData(data)); // Store the data we received from the API
   };
 
   storeData = (data) => {
     const events = data.events.map((event) => {
+      /* Only store the data we require */
       const {
         eventId,
         name,
@@ -55,13 +60,16 @@ class Events extends React.Component {
       };
     });
 
+    /* Get the markets and outcomes from the data */
     let { markets, outcomes } = data;
 
+    /* Take the market and outcome object and store them as array's */
     markets = Object.keys(markets).map(key => markets[key]);
     outcomes = Object.keys(outcomes).map(key => outcomes[key]);
 
     markets = markets.map((market) => {
       const marketList = market.map((marketItem) => {
+        /* Return only the data we require */
         const {
           marketId, eventId, name, type, status, liabilities,
         } = marketItem;
@@ -81,6 +89,7 @@ class Events extends React.Component {
 
     outcomes = outcomes.map((outcome) => {
       const outcomeList = outcome.map((outcomeItem) => {
+        /* Return only the data we require */
         const {
           outcomeId, marketId, eventId, name, result, type, price, status,
         } = outcomeItem;
@@ -105,7 +114,6 @@ class Events extends React.Component {
 
   render() {
     const { events, outcomes } = this.state;
-
     const { oddsDisplay } = this.props;
 
     return (

@@ -3,13 +3,21 @@ import { Link } from 'react-router-dom';
 import EventMarkets from './Event/EventMarkets';
 
 const Event = ({ event, outcome, oddsDisplay }) => {
+  // The outcome results for this event
   const outcomeItem = outcome.map(item => item);
+
+  // Name of the event and the status (live or not)
   const { name, status } = event;
-  let liveGame;
+
+  /**
+   * If the game is live
+   * store the liveBadge value
+   */
+  let liveBadge;
   if (status.live) {
-    liveGame = 'Live';
+    liveBadge = 'Live';
   } else {
-    liveGame = '';
+    liveBadge = '';
   }
 
   return (
@@ -18,7 +26,7 @@ const Event = ({ event, outcome, oddsDisplay }) => {
         <Link className="event-item__link" to={`/football/live/${event.eventId}`}>
           <div className="event-item__live">
             <span className="badge">
-              {liveGame}
+              {liveBadge}
             </span>
           </div>
           <div className="event-item__teams">

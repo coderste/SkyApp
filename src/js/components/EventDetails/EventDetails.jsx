@@ -4,6 +4,7 @@ import EventHeader from './EventInfo/EventHeader';
 import EventMarket from './EventInfo/EventMarket';
 import EventFooter from './EventFooter/EventFooter';
 
+/* Inner event page details */
 class EventDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -29,6 +30,7 @@ class EventDetails extends React.Component {
 
   componentDidMount() {
     const { url } = this.props;
+    // Fetch the data we require and store it
     this.fetchData(url);
   }
 
@@ -36,6 +38,11 @@ class EventDetails extends React.Component {
     const { url } = this.props;
     const { oldId } = this.state;
 
+    /**
+     * This checks if the oldId is equal to the new eventId
+     * if it is not then we fetch the new data again and trigger
+     * a component re-render
+     */
     if (url !== nextProps.url || oldId !== nextProps.match.params.eventId) {
       const { match } = nextProps;
       let { eventId } = match.params;
@@ -62,6 +69,8 @@ class EventDetails extends React.Component {
 
     // Store this event in an object for easy accessibility
     let eventItem = {};
+
+    // Store the other events and other linked events if there is any
     const otherEvents = [];
     const otherLinkedEvents = [];
 
@@ -72,6 +81,11 @@ class EventDetails extends React.Component {
     });
 
     events.forEach((item) => {
+      /**
+       * If linkedEventTypeName is equal to the new eventItem linkedEventTypeName
+       * but not the same item then we store the
+       * item object in an otherLinkedEvents array
+       */
       if (
         item.linkedEventTypeName === eventItem.linkedEventTypeName
         && item.eventId !== eventId
