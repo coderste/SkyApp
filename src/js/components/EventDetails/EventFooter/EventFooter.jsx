@@ -26,6 +26,7 @@ class EventFooter extends React.Component {
 
   render() {
     const { linkedEventType, linkedEvents, otherEvents } = this.state;
+    const { history } = this.props;
 
     let linked;
     if (linkedEvents.length > 0) {
@@ -38,7 +39,7 @@ class EventFooter extends React.Component {
             </span>
           </div>
           {linkedEvents.map(linkedEvent => (
-            <LinkedEvent id={linkedEvent.eventId} linkedEvent={linkedEvent} />
+            <LinkedEvent history={history} key={linkedEvent.eventId} linkedEvent={linkedEvent} />
           ))}
         </div>
       );
@@ -54,7 +55,7 @@ Other Live Events
             </span>
           </div>
           {otherEvents.map(otherEvent => (
-            <OtherEvent id={otherEvent.eventId} otherEvent={otherEvent} />
+            <OtherEvent history={history} key={otherEvent.eventId} otherEvent={otherEvent} />
           ))}
         </div>
       );

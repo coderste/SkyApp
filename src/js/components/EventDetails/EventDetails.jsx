@@ -10,6 +10,7 @@ class EventDetails extends React.Component {
 
     const { match } = this.props;
     let { eventId } = match.params;
+    const oldId = eventId;
     eventId = Number(eventId);
 
     this.state = {
@@ -22,6 +23,7 @@ class EventDetails extends React.Component {
       scores: '',
       otherEvents: [],
       otherLinkedEvents: [],
+      oldId,
     };
   }
 
@@ -32,7 +34,19 @@ class EventDetails extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { url } = this.props;
-    if (url !== nextProps.url) this.fetchData(url);
+    const { oldId } = this.state;
+
+    if (url !== nextProps.url || oldId !== nextProps.match.params.eventId) {
+      const { match } = nextProps;
+      let { eventId } = match.params;
+      eventId = Number(eventId);
+
+      this.setState({
+        eventId,
+      });
+
+      this.fetchData(url);
+    }
   }
 
   fetchData = (url) => {
@@ -119,6 +133,7 @@ class EventDetails extends React.Component {
     } = this.state;
 
     const { oddsDisplay } = this.props;
+    const { history } = this.props;
 
     let homePrefix = home.name;
     let awayPrefix = away.name;
@@ -152,6 +167,7 @@ class EventDetails extends React.Component {
           outcomes={outcomes}
         />
         <EventFooter
+          history={history}
           linkedEventType={eventItem.linkedEventTypeName}
           linkedEvents={otherLinkedEvents}
           otherEvents={otherEvents}
