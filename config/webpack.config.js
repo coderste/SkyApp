@@ -30,6 +30,7 @@ module.exports = {
     publicPath: '/assets/',
     port: 8000,
     hot: true,
+    inline: true,
     historyApiFallback: true,
   },
   plugins: [
