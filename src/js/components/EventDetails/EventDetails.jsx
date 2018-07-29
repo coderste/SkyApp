@@ -43,6 +43,7 @@ class EventDetails extends React.Component {
 
       this.setState({
         eventId,
+        oldId: eventId,
       });
 
       this.fetchData(url);
@@ -68,12 +69,19 @@ class EventDetails extends React.Component {
       if (item.eventId === eventId) {
         eventItem = item;
       }
+    });
 
-      if (item.linkedEventTypeName === eventItem.linkedEventTypeName) {
+    events.forEach((item) => {
+      if (
+        item.linkedEventTypeName === eventItem.linkedEventTypeName
+        && item.eventId !== eventId
+        && typeof item.linkedEventTypeName !== 'undefined'
+      ) {
         otherLinkedEvents.push(item);
       } else if (
         item.eventId !== eventId
-        && item.linkedEventTypeName !== eventItem.linkedEventTypeName
+        && item.linkedEventTypeName
+          !== (eventItem.linkedEventTypeName || typeof item.linkedEventTypeName === 'undefined')
       ) {
         otherEvents.push(item);
       }
@@ -117,6 +125,7 @@ class EventDetails extends React.Component {
       away,
       scores,
       otherEvents,
+      otherLinkedEvents,
     });
   };
 

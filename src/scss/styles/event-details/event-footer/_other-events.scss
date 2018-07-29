@@ -12,10 +12,14 @@
 
   .event-details {
     &__other {
+      display: block;
+      width: 100%;
       border: 1px solid #b3bfd3;
       border-bottom: 0;
       padding: 10px 15px;
       background: $team-bg;
+      color: $text-color;
+      text-decoration: none;
 
       &:last-of-type {
         border-bottom: 1px solid #b3bfd3;

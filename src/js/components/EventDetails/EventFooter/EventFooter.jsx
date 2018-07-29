@@ -25,16 +25,18 @@ class EventFooter extends React.Component {
   }
 
   render() {
-    const { linkedEventType, linkedEvents, otherEvents } = this.state;
-    const { history } = this.props;
+    const { linkedEvents, otherEvents } = this.state;
+    const { linkedEventType, history } = this.props;
 
     let linked;
     if (linkedEvents.length > 0) {
       linked = (
-        <div className="event-details__linked">
-          <div className="event-details__linked-title">
+        <div className="event-details__linked-events">
+          <div className="event-details__linked-events-title">
             <span className="title">
               Other Live events from
+              {' '}
+              {''}
               {linkedEventType}
             </span>
           </div>

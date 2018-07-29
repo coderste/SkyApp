@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LinkedEvent = ({ linkedEvent }) => (
-  <div className="linked-event">
-    <div className="linked-event__item">
-      {linkedEvent}
+  <Link className="event-details__linked" to={`/football/live/${linkedEvent.eventId}`}>
+    <div className="event-details__linked-name">
+      {linkedEvent.name}
     </div>
-  </div>
+  </Link>
 );
 
 export default LinkedEvent;

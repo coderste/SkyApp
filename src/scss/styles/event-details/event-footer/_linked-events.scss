@@ -1,0 +1,31 @@
+.event-details__linked-events {
+  margin-bottom: 25px;
+
+  &-title {
+    background-color: $details-header;
+    padding: 10px 15px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+
+    .title {
+      color: $white;
+    }
+  }
+
+  .event-details {
+    &__linked {
+      display: block;
+      width: 100%;
+      border: 1px solid #b3bfd3;
+      border-bottom: 0;
+      padding: 10px 15px;
+      background: $team-bg;
+      color: $text-color;
+      text-decoration: none;
+
+      &:last-of-type {
+        border-bottom: 1px solid #b3bfd3;
+      }
+    }
+  }
+}
