@@ -31,8 +31,18 @@ class EventMarket extends React.Component {
   };
 
   render() {
-    const { market } = this.props;
-    const { homeOdds, drawOdds, awayOdds } = this.state;
+    const { market, oddsDisplay } = this.props;
+    let { homeOdds, drawOdds, awayOdds } = this.state;
+
+    if (oddsDisplay === 'fraction') {
+      homeOdds = `${homeOdds.den}/${homeOdds.num}`;
+      drawOdds = `${drawOdds.den}/${drawOdds.num}`;
+      awayOdds = `${awayOdds.den}/${awayOdds.num}`;
+    } else {
+      homeOdds = homeOdds.decimal;
+      drawOdds = drawOdds.decimal;
+      awayOdds = awayOdds.decimal;
+    }
 
     return (
       <div className="event-details__markets">
@@ -43,8 +53,23 @@ class EventMarket extends React.Component {
             </span>
           </div>
           <div className="event-details__market-details">
-            <div className="event-details__maret-details-home">
-              {homeOdds.decimal}
+            <div className="event-details__market-detail home">
+              Win
+              <span className="odds">
+                {homeOdds}
+              </span>
+            </div>
+            <div className="event-details__market-detail draw">
+              Draw
+              <span className="odds">
+                {drawOdds}
+              </span>
+            </div>
+            <div className="event-details__market-detail away">
+              Win
+              <span className="odds">
+                {awayOdds}
+              </span>
             </div>
           </div>
         </div>

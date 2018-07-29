@@ -14,5 +14,39 @@
         color: $white;
       }
     }
+
+    &-details {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #b3bfd3;
+    }
+
+    &-detail {
+      width: 100%;
+      max-width: 33.33333%;
+      flex: 0 0 33.33333%;
+      background: $market-bg;
+      padding: 10px 0;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.9rem;
+
+      &.home {
+        border-right: 1px solid #e4ebf3;
+      }
+
+      &.draw {
+        border-right: 1px solid #e4ebf3;
+      }
+
+      .odds {
+        color: $odds-color;
+        margin-left: 5px;
+        display: inline-block;
+      }
+    }
   }
 }

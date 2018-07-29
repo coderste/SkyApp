@@ -73,7 +73,9 @@
       font-weight: bold;
       background: $market-bg;
       text-transform: capitalize;
-      min-width: 100px;
+      width: 100%;
+      max-width: 33.333333%;
+      flex: 0 0 33.333333%;
       border: {
         left: 1px solid $market-border-color;
         right: 1px solid $market-border-color;

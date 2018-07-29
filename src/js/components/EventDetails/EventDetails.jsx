@@ -2,6 +2,7 @@ import React from 'react';
 
 import EventHeader from './EventInfo/EventHeader';
 import EventMarket from './EventInfo/EventMarket';
+import EventFooter from './EventFooter/EventFooter';
 
 class EventDetails extends React.Component {
   constructor(props) {
@@ -19,6 +20,8 @@ class EventDetails extends React.Component {
       home: '',
       away: '',
       scores: '',
+      otherEvents: [],
+      otherLinkedEvents: [],
     };
   }
 
@@ -42,13 +45,30 @@ class EventDetails extends React.Component {
     const { eventId } = this.state;
     const { events, markets, outcomes } = results;
 
+    // Store this event in an object for easy accessibility
     let eventItem = {};
+    const otherEvents = [];
+    const otherLinkedEvents = [];
+
     events.forEach((item) => {
       if (item.eventId === eventId) {
         eventItem = item;
       }
+
+      if (item.linkedEventTypeName === eventItem.linkedEventTypeName) {
+        otherLinkedEvents.push(item);
+      } else if (
+        item.eventId !== eventId
+        && item.linkedEventTypeName !== eventItem.linkedEventTypeName
+      ) {
+        otherEvents.push(item);
+      }
     });
 
+    // Store the scores of this event
+    const { scores } = eventItem;
+
+    // Store the full-time result market in an object
     let market = {};
     Object.keys(markets).map(key => markets[key].forEach((item) => {
       if (item.eventId === eventId) {
@@ -56,6 +76,7 @@ class EventDetails extends React.Component {
       }
     }));
 
+    // Store the outcomes
     const outcome = [];
     Object.keys(outcomes).map(key => outcomes[key].forEach((item) => {
       if (item.marketId === market.marketId) {
@@ -63,6 +84,7 @@ class EventDetails extends React.Component {
       }
     }));
 
+    // Store the home and away team in an object
     let home = {};
     let away = {};
     eventItem.competitors.forEach((competitor) => {
@@ -73,8 +95,6 @@ class EventDetails extends React.Component {
       }
     });
 
-    const { scores } = eventItem;
-
     this.setState({
       eventItem,
       market,
@@ -82,13 +102,23 @@ class EventDetails extends React.Component {
       home,
       away,
       scores,
+      otherEvents,
     });
   };
 
   render() {
     const {
-      eventItem, home, away, scores, market, outcomes,
+      eventItem,
+      home,
+      away,
+      scores,
+      market,
+      outcomes,
+      otherEvents,
+      otherLinkedEvents,
     } = this.state;
+
+    const { oddsDisplay } = this.props;
 
     let homePrefix = home.name;
     let awayPrefix = away.name;
@@ -115,7 +145,17 @@ class EventDetails extends React.Component {
           eventItem={eventItem}
           scores={scores}
         />
-        <EventMarket eventItem={eventItem} market={market} outcomes={outcomes} />
+        <EventMarket
+          oddsDisplay={oddsDisplay}
+          eventItem={eventItem}
+          market={market}
+          outcomes={outcomes}
+        />
+        <EventFooter
+          linkedEventType={eventItem.linkedEventTypeName}
+          linkedEvents={otherLinkedEvents}
+          otherEvents={otherEvents}
+        />
       </div>
     );
   }
