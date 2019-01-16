@@ -2,8 +2,5 @@
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:200,300,400,600,700);
 
 $fa-font-path: '/assets/webfonts/';
-@import '~@fortawesome/fontawesome-pro/scss/fontawesome';
-@import '~@fortawesome/fontawesome-pro/scss/light';
-@import '~@fortawesome/fontawesome-pro/scss/regular';
-@import '~@fortawesome/fontawesome-pro/scss/solid';
-
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';

@@ -9,7 +9,7 @@ class Header extends React.Component {
     this.settings = React.createRef();
   }
 
-  openSettings = (event) => {
+  openSettings = event => {
     const { target } = event;
     const setting = this.settings.current;
 
@@ -26,7 +26,7 @@ class Header extends React.Component {
     }
   };
 
-  toggleOdds = (event) => {
+  toggleOdds = event => {
     const { target } = event;
     const { toggleOdds } = this.props;
 
@@ -66,7 +66,7 @@ class Header extends React.Component {
             </div>
             <div className="site-header__controls">
               <button type="button" className="odds-toggle" onClick={eve => this.openSettings(eve)}>
-                <i className="fal fa-cog" />
+                <i className="far fa-cog" />
               </button>
               <div ref={this.settings} className="odds-toggle__overlay" style={{ display: 'none' }}>
                 <button
